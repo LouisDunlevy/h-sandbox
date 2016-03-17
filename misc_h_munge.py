@@ -1,3 +1,26 @@
+#RENAMER 
+
+import re
+
+def rename(kwargs):
+    print "running"
+    node = kwargs['node']
+    selectedNodes = hou.selectedNodes()
+    src = node.evalParm('src')
+    dest = node.evalParm('dest')
+    for n in selectedNodes:
+        print n
+        name = n.name()
+        if src in name :
+            newname = re.sub(src,dest,name)
+            print "name is :" + name
+            print "new name :" + re.sub(src,dest,name)
+            #n.setName(name.replace(src,dest))
+            #n.setName(re.sub(src,dest,name))
+            n.setName(newname)
+
+
+
 #CREATE A PRIMITIVE GROUP FOR EACH POLYGON ON A GEOMETRY
 
 node = hou.pwd()
