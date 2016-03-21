@@ -1,3 +1,7 @@
+path=hou.pwd().parm("elem_subdir").eval()
+newpath = "/".join(path.split("/")[0:5])
+return newpath
+
 
 
 
