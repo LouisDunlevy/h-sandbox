@@ -1,9 +1,5 @@
 
-# This code automatically created by LFLDA.
-import hou_otl.hou_otl_wikiStarter
-def createHelp(kwargs):
-    hou_otl.hou_otl_wikiStarter.createHelp( kwargs )
-## End of LFLDA code.
+
 
 def opColor(kwargs):
     inst = kwargs['node']
@@ -11,17 +7,6 @@ def opColor(kwargs):
     inst.setColor( hou.Color((0.75*read,0.5*(1-read),0)) )
 
 
-# This checks for invalid exflist
-import exflist
-def checkExflist(kwargs):    
-    exf_list = exflist.exflist(kwargs['node'].evalParm('exf_list')) 
-    if not exf_list:
-        hou.ui.displayMessage("Please Check your exflist input") 
-
-# This resets the modify exflist
-def resetModifyExflist(kwargs):
-    if kwargs['node'].evalParm('modify_exf') == 0:
-        kwargs['node'].parm('exf_list').revertToDefaults()
 
 
 def show_cleanup(kwargs):
@@ -60,10 +45,7 @@ def makeFetch(kwargs):
     ### perhaps link all parms in Bake folder
     #sopParmTemplateGroup = node.parmTemplateGroup()
     #fetchnode.setParmTemplateGroup(sopParmTemplateGroup)
-    
-    # Add HBatch3 parms to the fetch ROP
-    import HoudiniBatch3.ropsettings
-    HoudiniBatch3.ropsettings.addPhaseSettingsOverrides(fetchnode)
+
     
     # Channel link all the hbatch parms on the fetch back to the SOP.
     for parm in fetchnode.parms():
@@ -143,7 +125,7 @@ def returnUsers(kwargs):
     return list
 
 
-def refreshVersionList(kwargs): # slightly simpler version of the version_cleanup module in OUT Geom v2
+def refreshVersionList(kwargs): # slightly simpler version
     import os
     import re
 
